@@ -1,4 +1,4 @@
-package model;
+package news.model;
 
 import javax.persistence.*;
 import java.util.Date;
