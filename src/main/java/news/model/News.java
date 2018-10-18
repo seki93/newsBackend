@@ -21,7 +21,7 @@ public class News {
 
     private boolean active;
 
-    private String categorty;
+    private String category;
 
     private String city;
 
@@ -73,12 +73,12 @@ public class News {
         this.active = active;
     }
 
-    public String getCategorty() {
-        return categorty;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategorty(String categorty) {
-        this.categorty = categorty;
+    public void setCategory(String categorty) {
+        this.category = categorty;
     }
 
     public String getCity() {

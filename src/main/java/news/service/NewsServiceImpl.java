@@ -4,6 +4,8 @@ import news.model.News;
 import news.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class NewsServiceImpl implements NewsService{
     @Autowired
     NewsRepository newsRepository;
@@ -21,6 +23,16 @@ public class NewsServiceImpl implements NewsService{
     @Override
     public void save(News news) {
         newsRepository.save(news);
+    }
+
+    @Override
+    public List<News> findByCategory(String category) {
+        return newsRepository.findByCategory(category);
+    }
+
+    @Override
+    public List<News> findByCity(String city) {
+        return newsRepository.findByCity(city);
     }
 
 
