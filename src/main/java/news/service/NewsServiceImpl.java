@@ -3,10 +3,12 @@ package news.service;
 import news.model.News;
 import news.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class NewsServiceImpl implements NewsService{
+@Service
+public class NewsServiceImpl implements NewsService {
     @Autowired
     NewsRepository newsRepository;
 
@@ -35,5 +37,13 @@ public class NewsServiceImpl implements NewsService{
         return newsRepository.findByCity(city);
     }
 
+    @Override
+    public News findByTitle(String title) {
+        return newsRepository.findByTitle(title);
+    }
 
+    @Override
+    public List<News> findByCityAndCategory(String city, String category) {
+        return newsRepository.findByCityAndCategory(city, category);
+    }
 }

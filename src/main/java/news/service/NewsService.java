@@ -1,6 +1,7 @@
 package news.service;
 
 import news.model.News;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -8,11 +9,15 @@ public interface NewsService {
 
     Iterable<News> findAll();
 
-    public News findById(Integer id);
+    News findById(Integer id);
 
     void save(News news);
 
-    public List<News> findByCategory(String category);
+    List<News> findByCategory(String category);
 
-    public List<News> findByCity(String city);
+    List<News> findByCity(String city);
+
+    News findByTitle(String title);
+
+    List<News> findByCityAndCategory(String city, String category);
 }

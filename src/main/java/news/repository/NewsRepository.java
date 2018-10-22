@@ -20,4 +20,16 @@ public interface NewsRepository extends CrudRepository<News, Integer> {
             nativeQuery = true
     )
     List<News> findByCity(@Param("city") String city);
+
+    @Query(
+            value = "SELECT n FROM news n WHERE n.title = :title",
+            nativeQuery = true
+    )
+    News findByTitle(@Param("title") String title);
+
+    @Query(
+            value = "SELECT n FROM news n WHERE n.city = :city and n.category = :category",
+            nativeQuery = true
+    )
+    List<News> findByCityAndCategory(@Param("city") String city, @Param("category") String category);
 }

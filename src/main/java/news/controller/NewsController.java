@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
-@RequestMapping(path = "news/")
+@RequestMapping(path = "news")
 public class NewsController {
 
     @Autowired
@@ -30,9 +30,9 @@ public class NewsController {
                         @RequestParam String text,
                         @RequestParam String stringDate,
                         @RequestParam String category,
-                        @RequestParam String city){
+                        @RequestParam String city) {
         try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(stringDate);
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(stringDate);
 
             News news = new News(title, description, text, date, true, category, city);
 
@@ -45,7 +45,21 @@ public class NewsController {
     }
 
     @GetMapping(path = "/city")
-    public Iterable<News> getByCity(@RequestParam String cityname){
-        return newsService.findByCity(cityname);
+    public Iterable<News> getByCity(@RequestParam String city){
+        return newsService.findByCity(city);
+    }
+
+    @GetMapping(path = "/delete")
+    public String deleteNewsByTitle(@RequestParam String title) {
+        News news = newsService.findByTitle(title);
+        news.setActive(false);
+
+        return "Wonderful! You are now deleted some news!";
+    }
+
+    @GetMapping(path = "/cityAndCategory")
+    public Iterable<News> getByCityAndCategory(@RequestParam String city,
+                                               @RequestParam String category) {
+        return newsService.findByCityAndCategory(city, category);
     }
 }
