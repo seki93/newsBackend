@@ -7,6 +7,18 @@ import java.util.Date;
 @Table(name = "news")
 public class News {
 
+    public News() {}
+
+    public News(String title, String description, String text, Date date, boolean active, String category, String city) {
+        this.title = title;
+        this.description = description;
+        this.text = text;
+        this.date = date;
+        this.active = active;
+        this.category = category;
+        this.city = city;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
