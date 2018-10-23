@@ -9,7 +9,8 @@ public class News {
 
     public News() {}
 
-    public News(String title, String description, String text, Date date, boolean active, String category, String city) {
+    public News(String title, String description, String text, Date date, boolean active,
+                String category, String city, String pathToPicture) {
         this.title = title;
         this.description = description;
         this.text = text;
@@ -17,6 +18,7 @@ public class News {
         this.active = active;
         this.category = category;
         this.city = city;
+        this.pathToPicture = pathToPicture;
     }
 
     @Id
@@ -36,6 +38,8 @@ public class News {
     private String category;
 
     private String city;
+
+    private String pathToPicture;
 
     public Integer getId() {
         return id;
@@ -99,5 +103,11 @@ public class News {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPathToPicture() { return pathToPicture; }
+
+    public void setPathToPicture(String pathToPicture) {
+        this.pathToPicture = pathToPicture;
     }
 }

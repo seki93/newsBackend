@@ -30,11 +30,12 @@ public class NewsController {
                         @RequestParam String text,
                         @RequestParam String stringDate,
                         @RequestParam String category,
-                        @RequestParam String city) {
+                        @RequestParam String city,
+                          @RequestParam String pathToPicture) {
         try {
             Date date = new SimpleDateFormat("dd-MM-yyyy").parse(stringDate);
 
-            News news = new News(title, description, text, date, true, category, city);
+            News news = new News(title, description, text, date, true, category, city, pathToPicture);
 
             newsService.save(news);
         } catch (ParseException e) {
