@@ -46,4 +46,19 @@ public class NewsServiceImpl implements NewsService {
     public List<News> findByCityAndCategory(String city, String category) {
         return newsRepository.findByCityAndCategory(city, category);
     }
+
+    @Override
+    public String[] getAllCities() {
+        return newsRepository.getAllCities();
+    }
+
+    @Override
+    public String[] getAllCategories() {
+        return newsRepository.getAllCategories();
+    }
+
+    @Override
+    public String[] getCategoriesByCity(String city) {
+        return newsRepository.getCategoriesByCity(city);
+    }
 }

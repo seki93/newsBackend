@@ -20,4 +20,10 @@ public interface NewsService {
     News findByTitle(String title);
 
     List<News> findByCityAndCategory(String city, String category);
+
+    String[] getAllCities();
+
+    String[] getAllCategories();
+
+    String[] getCategoriesByCity(String city);
 }

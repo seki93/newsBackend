@@ -13,11 +13,31 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
-@RequestMapping(path = "news")
+@RequestMapping(path = "/news")
 public class NewsController {
 
     @Autowired
     private NewsService newsService;
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello, world";
+    }
+
+    @GetMapping("/cities")
+    public String[] getAllCities() {
+        return newsService.getAllCities();
+    }
+
+    @GetMapping("/categories")
+    public String[] getAllCategories() {
+        return newsService.getAllCategories();
+    }
+
+    @GetMapping("/categoriesByCity")
+    public String[] getCategoriesByCity(@RequestParam String city) {
+        return newsService.getCategoriesByCity(city);
+    }
 
     @GetMapping(path = "/all")
     public Iterable<News> getAll(){
@@ -31,7 +51,7 @@ public class NewsController {
                         @RequestParam String stringDate,
                         @RequestParam String category,
                         @RequestParam String city,
-                          @RequestParam String pathToPicture) {
+                        @RequestParam String pathToPicture) {
         try {
             Date date = new SimpleDateFormat("dd-MM-yyyy").parse(stringDate);
 
@@ -41,7 +61,7 @@ public class NewsController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
+
         return "Added new News";
     }
 

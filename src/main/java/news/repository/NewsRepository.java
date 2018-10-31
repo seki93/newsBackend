@@ -32,4 +32,23 @@ public interface NewsRepository extends CrudRepository<News, Integer> {
             nativeQuery = true
     )
     List<News> findByCityAndCategory(@Param("city") String city, @Param("category") String category);
+
+    @Query(
+            value = "SELECT distinct n.city FROM news n",
+            nativeQuery = true
+    )
+    String[] getAllCities();
+
+    @Query(
+            value = "SELECT distinct n.category FROM news n",
+            nativeQuery = true
+    )
+    String[] getAllCategories();
+
+    @Query(
+            value = "SELECT distinct n.category FROM news n WHERE n.city = :city",
+            nativeQuery = true
+    )
+    String[] getCategoriesByCity(@Param("city") String city);
+
 }
