@@ -24,6 +24,11 @@ public class NewsController {
         return "Hello, world";
     }
 
+    @GetMapping("/id")
+    public News findById(Integer id) {
+        return newsService.findById(id);
+    }
+
     @GetMapping("/cities")
     public String[] getAllCities() {
         return newsService.getAllCities();
