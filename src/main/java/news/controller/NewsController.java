@@ -3,10 +3,7 @@ package news.controller;
 import news.model.News;
 import news.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,7 +46,7 @@ public class NewsController {
         return newsService.findAll();
     }
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public String addNews(@RequestParam String title,
                         @RequestParam String description,
                         @RequestParam String text,
