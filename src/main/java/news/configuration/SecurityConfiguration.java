@@ -25,11 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors().and().csrf().disable().
-                authorizeRequests()
-                .anyRequest()
-                .fullyAuthenticated()
-                .and().httpBasic();
+        httpSecurity.cors().and().csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .anyRequest().permitAll();
     }
 
     @Bean
@@ -48,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.cors().and().csrf().disable()
 //                .authorizeRequests()
-////                .antMatchers(HttpMethod.GET, "/api/systemDynamicOption").permitAll()        //system
+////              .antMatchers(HttpMethod.GET, "/api/systemDynamicOption").permitAll()        //system
 //                .antMatchers(HttpMethod.GET, "/api/loginFormData").permitAll()              //login
 //                .antMatchers(HttpMethod.POST, "/api/login").permitAll()                     //login
 //                .antMatchers(HttpMethod.GET, "/api/userIdHeaderFieldName").permitAll()      //login
