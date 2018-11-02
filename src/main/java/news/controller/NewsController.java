@@ -86,4 +86,9 @@ public class NewsController {
                                                @RequestParam String category) {
         return newsService.findByCityAndCategory(city, category);
     }
+
+    @GetMapping(path = "/byCategory")
+    public Iterable<News> getByCategory(@RequestParam String category){
+        return newsService.findByCategory(category);
+    }
 }
